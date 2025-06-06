@@ -1,30 +1,30 @@
-pipeline{
+pipeline {
     agent any
 
-    stages{
-        stage('Checkout'){
-            steps{
+    stages {
+        stage('Checkout') {
+            steps {
                 checkout scm
             }
         }
-        stage('Run Script'){
-            steps{
+
+        stage('Run Script') {
+            steps {
                 sh '''
-                pip install --upgrade pip
-                pip install -r requirements.txt
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                    python3 assign_sso_roles.py
                 '''
             }
-
         }
-
     }
-    post{
-        success{
+
+    post {
+        success {
             echo 'Success'
         }
-        failure{
+        failure {
             echo 'Failed'
         }
     }
-
 }
