@@ -356,7 +356,7 @@ def main():
             for assignment in account["assignments"]:
                 name = assignment["name"]
                 for perm in assignment["permission_sets"]:
-                    print(f"{account_name} - {perm}")
+                    print(f"{account_name}-{perm}")
 
     print("output saved")
 
