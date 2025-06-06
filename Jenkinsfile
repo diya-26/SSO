@@ -14,7 +14,6 @@ pipeline {
                                                  usernameVariable: 'AWS_ACCESS_KEY_ID', 
                                                  passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
-                        pip install --upgrade pip
                         pip install -r requirements.txt
                         python3 assign_sso_roles.py
                     '''
