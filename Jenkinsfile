@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'CUSTOMER_SSO_ACCOUNT', description: 'Customer SSO AWS Account ID')
+        string(name: 'CUSTOMER_SSO_REGION',  description: 'Customer SSO AWS Region')
+        string(name: 'CK_SSO_ACCOUNT',description: 'CK SSO AWS Account ID')
+        string(name: 'CK_SSO_REGION',description: 'CK SSO AWS Region')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -15,7 +22,7 @@ pipeline {
                                                  passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
                         pip install -r requirements.txt
-                        python3 assign_sso_roles.py
+                        python3 assign_sso_roles.py "$CUSTOMER_SSO_ACCOUNT" "$CUSTOMER_SSO_REGION" "$CK_SSO_ACCOUNT" "$CK_SSO_REGION"
                     '''
                 }
             }
