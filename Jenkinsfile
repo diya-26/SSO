@@ -22,7 +22,7 @@ pipeline {
                                                  passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
                         pip install -r requirements.txt
-                        python3 assign_sso_roles.py "$CUSTOMER_SSO_ACCOUNT" "$CUSTOMER_SSO_REGION" "$CK_SSO_ACCOUNT" "$CK_SSO_REGION"
+                        python3 application_assignment.py "$CUSTOMER_SSO_ACCOUNT" "$CUSTOMER_SSO_REGION" "$CK_SSO_ACCOUNT" "$CK_SSO_REGION"
                     '''
                 }
             }
