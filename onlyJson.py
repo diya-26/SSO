@@ -4,7 +4,7 @@ import sys
 
 def assume_role(accountid: str):
     sts_client = boto3.client('sts')
-    role_arn = f'arn:aws:iam::{accountid}:role/CloudKeeper-SSO-Role'
+    role_arn = f'arn:aws:iam::{accountid}:role/Test-Role-User-Group-SSO-Script'
     assumed_role = sts_client.assume_role(
         RoleArn=role_arn,
         RoleSessionName='AssumeRoleSession'
